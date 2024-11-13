@@ -65,9 +65,22 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        // to update user detail.
+        // echo "<br>";
+        // var_dump($_POST);
+        // dd($request, $user);
+
+        // assign user variable values to request values.
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        // save new user details.
+        $user->save();
+
+        // redirect user.index after update with success alert.
+        return redirect()->route('user.index')->with('success', 'User detail has been updated!');
     }
 
     /**
