@@ -34,6 +34,8 @@
 
                     {{-- add list pagination  --}}
                     {{ $users->links() }}
+
+                    {{-- table  --}}
                     <table class="table table-zebra mx-4 my-4">
                         <thead>
                             <tr>
@@ -57,6 +59,8 @@
                             @endforeach 
                         </tbody>
                     </table>
+                    {{-- table  --}}
+                    
                     {{ $users->links() }}
                     {{-- add list pagination  --}}
 
