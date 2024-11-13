@@ -72,9 +72,18 @@ class UserController extends Controller
         // var_dump($_POST);
         // dd($request, $user);
 
+        // create validation rules.
+        $rules = [
+            'name' => 'required|string|max:255|min:5',
+            'email' => 'required|email|unique:users,email' . $user->id
+        ];
+
+        // get to validate data with rules set.
+        $validated_data = $request->validate($rules);
+
         // assign user variable values to request values.
-        $user->name = $request->name;
-        $user->email = $request->email;
+        $user->name = $validated_data['name']; // $request->name;
+        $user->email = $validated_data['email']; // $request->email;
 
         // save new user details.
         $user->save();
